@@ -9,6 +9,8 @@ import './Home.less';
 export class Home extends React.Component {
 
   render() {
+    const { state } = this.props;
+    
     return (
       <div className="home">
         Hello World

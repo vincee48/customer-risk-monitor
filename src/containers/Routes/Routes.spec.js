@@ -7,8 +7,4 @@ describe('Routes', function() {
   it('contains className of component', function() {
     expect(shallow(<Routes />).is('.routes')).to.equal(true);
   });
-
-  it('contains only one className of component', function() {
-    expect(mount(<Routes />).find('.routes').length).to.equal(1);
-  });
 });

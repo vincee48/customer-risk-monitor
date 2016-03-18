@@ -15,8 +15,8 @@ npm install --save-dev babel-eslint@4.1.3 eslint@1.10.3 eslint-plugin-react@3.6.
 // Testing
 npm install --save-dev react-addons-test-utils mocha chai enzyme jsdom ignore-styles
 
-// Production
-npm install --save-dev dotenv
+// Components
+npm install --save react-router history
 
 npm start
 
