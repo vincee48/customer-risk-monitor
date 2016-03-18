@@ -1,10 +1,12 @@
 'use strict';
 
 import React from 'react';
+import { mapStateToProps, mapDispatchToProps } from '../../reducers/mapping';
+import { connect } from 'react-redux';
 
 import './Home.less';
 
-class Home extends React.Component {
+export class Home extends React.Component {
 
   render() {
     return (
@@ -15,4 +17,4 @@ class Home extends React.Component {
   }
 };
 
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -4,7 +4,7 @@
 npm install --save react react-dom
 
 // Webpack / Loaders
-npm install --save-dev webpack webpack-dev-server less less-loader style-loader css-loader react-hot-loader
+npm install --save-dev webpack webpack-dev-server less less-loader style-loader css-loader react-hot-loader dsv-loader
 
 // ES2015 / ES7 / JSX compiler
 npm install --save-dev babel-core babe-loader babel-preset-es2015 babel-preset-react babel-preset-stage-0

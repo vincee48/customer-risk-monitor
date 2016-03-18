@@ -1,10 +1,20 @@
 'use strict';
 
 import React from 'react';
+import { mapStateToProps, mapDispatchToProps } from '../../reducers/mapping';
+import { connect } from 'react-redux';
+import * as types from '../../reducers/Bet/types';
 
 import './Routes.less';
 
-class Routes extends React.Component {
+export class Routes extends React.Component {
+
+  componentDidMount() {
+    if (this.props.load) { 
+      this.props.load(types.SETTLEDSTART);
+      this.props.load(types.UNSETTLEDSTART);
+    }
+  }
 
   render() {
     return (
@@ -15,4 +25,4 @@ class Routes extends React.Component {
   }
 };
 
-export default Routes;
+export default connect(mapStateToProps, mapDispatchToProps)(Routes);
