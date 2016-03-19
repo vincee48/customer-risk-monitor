@@ -6,8 +6,7 @@ describe('Bet Reducer', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).to.eql({
       loading: {},
-      settled: [],
-      unsettled: []
+      customers: {}
     });
   });
 
@@ -18,8 +17,7 @@ describe('Bet Reducer', () => {
       loading: {
         settled: true
       },
-      settled: [],
-      unsettled: []
+      customers: {}
     });
   });
 
@@ -30,34 +28,39 @@ describe('Bet Reducer', () => {
       loading: {
         unsettled: true
       },
-      settled: [],
-      unsettled: []
+      customers: {}
     });
   });
 
   it('should handle SETTLEDCOMPLETE', () => {
     expect(reducer(undefined, {
       type: types.SETTLEDCOMPLETE,
-      records: ['settled']
+      records: { 1: [{ Customer: '1' }] }
     })).to.eql({
       loading: {
         settled: false
       },
-      settled: ['settled'],
-      unsettled: []
+      customers: {
+        1: {
+          settled: [{ Customer: '1' }]
+        }
+      }
     });
   });
 
   it('should handle UNSETTLEDCOMPLETE', () => {
     expect(reducer(undefined, {
       type: types.UNSETTLEDCOMPLETE,
-      records: ['unsettled']
+      records: { 1: ['unsettled'] }
     })).to.eql({
       loading: {
         unsettled: false
       },
-      settled: [],
-      unsettled: ['unsettled']
+      customers: {
+        1: {
+          unsettled: ['unsettled']
+        }
+      }
     });
   });
 });

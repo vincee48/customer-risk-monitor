@@ -5,8 +5,7 @@ import * as types from './types';
 
 const initialState = {
   loading: {},
-  settled: [],
-  unsettled: []
+  customers: {}
 };
 
 export default function Bet(state = initialState, action = {}) {
@@ -20,13 +19,32 @@ export default function Bet(state = initialState, action = {}) {
         }
       };
     case types.SETTLEDCOMPLETE:
+      let customersSettled = {...state.customers};
+      Object.keys(action.records).forEach((key) => {
+        if (!customersSettled[key]) {
+          customersSettled[key] = {}
+        }
+        customersSettled[key].settled = action.records[key];
+        customersSettled[key].totalSettledBets = action.records[key].length;
+        customersSettled[key].totalSettledWins = action.records[key].filter((bet) => {
+          return bet.Win > 0;
+        }).length;
+        let totalStakes = 0;
+        action.records[key].forEach((bet) => {
+          totalStakes += parseFloat(bet.Stake);
+        });
+        customersSettled[key].totalSettledStakes = totalStakes;
+        customersSettled[key].averageSettledStakes = customersSettled[key].totalSettledStakes / customersSettled[key].totalSettledBets;
+        customersSettled[key].winRate = customersSettled[key].totalSettledWins / customersSettled[key].totalSettledBets;
+      });
+
       return {
         ...state,
         loading: {
           ...state.loading,
           settled: false
         },
-        settled: action.records
+        customers: customersSettled
       };
     case types.UNSETTLEDSTART:
       return {
@@ -37,13 +55,21 @@ export default function Bet(state = initialState, action = {}) {
         }
       };
     case types.UNSETTLEDCOMPLETE:
+      var customersUnsettled = {...state.customers};
+      Object.keys(action.records).forEach((key) => {
+        if (!customersUnsettled[key]) {
+          customersUnsettled[key] = {}
+        }
+        customersUnsettled[key].unsettled = action.records[key];
+      });
+
       return {
         ...state,
         loading: {
           ...state.loading,
           unsettled: false
         },
-        unsettled: action.records
+        customers: customersUnsettled
       };
     default:
       return state;
