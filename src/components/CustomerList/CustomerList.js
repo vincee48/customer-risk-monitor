@@ -17,8 +17,9 @@ const customerList = (props) => {
               <div className="pull-left">
                 <i className="fa fa-user" /> {key}
               </div>
-              <div className="pull-right">
+              <div className="icons pull-right">
                 <RiskBadge customer={customer} mini />
+                <i className="fa fa-angle-right margin-horizontal" />
               </div>
             </li>
           )
