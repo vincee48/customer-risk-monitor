@@ -26,10 +26,11 @@ Technologies used for development:
 ### Approach
 Approach taken for development were:
 
-1. Stateless React components where possible
-2. Handle business logic on Redux store where not indicative only
-3. High test coverage on components and stores
-4. Completely independent components to be used for other datasets
+1. ES2015 / ES6+ only
+2. Stateless React components where possible
+3. Handle business logic on Redux store where not indicative only
+4. High test coverage on components and stores
+5. Completely independent components to be used for other datasets
 
 ### Installation
 ```
