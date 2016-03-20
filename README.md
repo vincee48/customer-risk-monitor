@@ -32,6 +32,15 @@ Approach taken for development were:
 4. High test coverage on components and stores
 5. Completely independent components to be used for other datasets
 
+#### Task 1:
+A customer that wins on more than 60% of their settled bets will be flagged as a high risk customer. This appears in the customer listing on the left side of the application in a condensed view, as well as on their statistics listing in a badge format. Furthermore, they will also be flagged on their unsettled bets view.
+
+#### Task 2:
+* Unsettled bets from customers that win at an unusual rate will be highlighted as High Risk (as above) in their unsettled bets view.
+* Bets where the stake is more than 10 times higher than the customer's average will be highlighted in orange, as well as flagging the customer as having an Unusual activity in their Unsettled bets.
+* Bets where the stake is more than 30 times higher than the customer's average will be highlighted in red, as well as flagging the customer as having a Highly Unusual activity in their Unsettled bets.
+* Bets where the amount to be won is $1000 or more will be highlighted as teal, as well as flagging the customer as having a potential winning amount > $1000.
+
 ### Installation
 ```
 // Clone the repository and run
