@@ -1,5 +1,7 @@
 ## Customer Risk Monitor
 
+Example can be found at: http://vincee48.github.io/customer-risk-monitor/
+
 Customer Risk Monitor is a React.js + Redux.js application which accepts data as a CSV and provides the components to display tabular data to highlight risks and unusual activity.
 
 - [Packages](#packages)
