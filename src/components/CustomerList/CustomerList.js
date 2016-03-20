@@ -2,33 +2,43 @@
 'use strict';
 
 import React from 'react';
-
 import './CustomerList.less';
+import RiskBadge from '../RiskBadge/RiskBadge';
 
-const CustomerList = (props) => {
+const customerList = (props) => {
   return (
-    <div className="customer-list">
+    <ul className="customer-list list-group">
       {
         Object.keys(props.customers).map((key, i) => {
           const customer = props.customers[key];
-          const btnClass = 'btn btn-block ' + (props.selectedCustomer === customer ? 'btn-primary' : 'btn-default');
+          const listClass = 'list-group-item ' + (props.selectedCustomer === customer ? 'brand-primary' : '');
           return (
-            <div className="row" key={i}>
-              <button className={btnClass} onClick={() => props.onClick(customer)}>
+            <li className={listClass} key={i} onClick={() => props.onClick(customer)}>
+              <div className="pull-left">
                 <i className="fa fa-user" /> {key}
-              </button>
-            </div>
+              </div>
+              <div className="pull-right">
+                <RiskBadge customer={customer} mini />
+              </div>
+            </li>
           )
         })
       }
-    </div>
-  )
+    </ul>
+  );
 };
 
-CustomerList.propTypes = {
+customerList.propTypes = {
   customers: React.PropTypes.object,
   selectedCustomer: React.PropTypes.object,
   onClick: React.PropTypes.func
 };
 
+customerList.defaultProps = {
+  customers: {},
+  selectedCustomer: {},
+  onClick: () => {}
+};
+
+export const CustomerList = customerList;
 export default CustomerList;

@@ -24,6 +24,9 @@ export default function Bet(state = initialState, action = {}) {
         if (!customersSettled[key]) {
           customersSettled[key] = {}
         }
+
+        // Set up statistics
+        customersSettled[key].ID = key;
         customersSettled[key].settled = action.records[key];
         customersSettled[key].totalSettledBets = action.records[key].length;
         customersSettled[key].totalSettledWins = action.records[key].filter((bet) => {
@@ -36,6 +39,7 @@ export default function Bet(state = initialState, action = {}) {
         customersSettled[key].totalSettledStakes = totalStakes;
         customersSettled[key].averageSettledStakes = customersSettled[key].totalSettledStakes / customersSettled[key].totalSettledBets;
         customersSettled[key].winRate = customersSettled[key].totalSettledWins / customersSettled[key].totalSettledBets;
+        customersSettled[key].atRisk = customersSettled[key].winRate > 0.6;
       });
 
       return {

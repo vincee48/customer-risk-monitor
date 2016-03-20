@@ -1,7 +1,43 @@
+@import './Colours.less';
+
 html, body, #app {
   height: 100%;
   min-height: 100%;
   background-color: #fff;
   margin: 0;
   padding: 0;
+}
+
+.flex-row {
+  display: block;
+  align-items: center;
+  overflow: auto;
+}
+
+.badge {
+  display: block;
+}
+
+.brand-primary {
+  background-color: @brandPrimary;
+  color: @fontSecondary;
+}
+
+.brand-secondary {
+  background-color: @brandSecondary;
+  color: @fontSecondary;
+}
+
+.background-danger {
+  background-color: @fontDanger;
+  color: @fontSecondary;
+}
+
+.background-warning {
+  background-color: @fontWarning;
+  color: @fontSecondary;
+}
+
+.font-danger {
+  color: @fontDanger;
 }
