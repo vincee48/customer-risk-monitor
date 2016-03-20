@@ -8,12 +8,11 @@
     "test": "mocha test.config.js --require ignore-styles --compilers js:babel-register --recursive src/**/*.spec.js",
     "test:watch": "npm test -- --watch",
     "lint": "eslint src",
-    "dist": "npm test && npm run lint && rm -rf dist/ && webpack --config webpack.config.production.js -p"
+    "dist": "npm test && npm run lint && rm -rf dist/ && webpack --config webpack.config.production.js -p && cp index.html dist/index.html"
   },
   "author": "Vincent Lo",
   "license": "ISC",
   "dependencies": {
-    "dsv-loader": "^1.0.3",
     "history": "^2.0.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
@@ -31,6 +30,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
+    "dsv-loader": "^1.0.3",
     "enzyme": "^2.1.0",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.6.2",

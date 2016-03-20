@@ -2,15 +2,13 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+  debug: false,
   devtool: 'cheap-module-source-map',
-  entry: [
-    'webpack-dev-server/client?http://localhost:8000',
-    'webpack/hot/only-dev-server',
-    './src/App'
-  ],
+  entry: './src/App',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
+    path: 'dist/assets/',
     publicPath: '/assets/'
   },
   plugins: [
@@ -19,11 +17,10 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress:{
-        warnings: true
-      }
-    })
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin()
   ],
   module: {
     loaders: [
